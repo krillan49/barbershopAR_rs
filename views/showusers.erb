@@ -1,0 +1,36 @@
+<h2 class="text-center">Список записавшихся</h2>
+
+<div class="container"> 
+  <div class="table-responsive">
+
+    <table class="table table-hover table-bordered">
+      <!--<caption>Таблица 1:  Все колонки</caption>-->
+      <thead>
+        <tr class="table-active">
+          <th>Name</th><th>Phone</th><th>Date</th><th>Barber</th><th>Color</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% @clients.each do |client| %>
+          <tr>
+            <td><%= client.name %></td>
+            <!-- Создаем в таблице ссылку на обработчик каждого клиента -->
+            <!--<td><a href="/clients/<%= client.id %>"><%= client.name %></a></td>--> 
+            <td><%= client.phone %></td>
+            <td><%= client.datestamp %></td>
+            <td><%= client.barber %></td>
+
+            <!-- Выбор цвета текста в зависимости от цвета клиента -->
+            <% if client.color[1..-1].chars.each_slice(2).map{|a| a.join.to_i(16)}.sum < 400 %>
+              <% color = 'color: white;'%>
+            <% end %>
+            <td style="background: <%= client.color %>; <%= color %>"><%= client.color %></td>
+          </tr>
+        <% end %>
+
+      <tbody>
+    </table>
+
+  </div>
+</div>
