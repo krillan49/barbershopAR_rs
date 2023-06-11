@@ -28,6 +28,29 @@ end
 # авторизация
 # =============================================
 
+get '/login' do
+	@active = 'login'
+  erb :login
+end
+
+post '/login' do
+	@active = 'login'
+
+  @login    = params[:login]
+  @password = params[:password]
+
+  if @login == 'admin' && @password == 'secret'
+    erb :admin
+  else
+    @dinaed = 'Access is denied'
+    erb :login
+  end
+end
+
+get '/admin' do
+	@active = 'login'
+  erb :admin
+end
 
 # =============================================
 # зона записи к парикмахеру

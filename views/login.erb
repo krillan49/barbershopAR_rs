@@ -1,0 +1,22 @@
+<div class="container-sm"> <!-- почемуто работает как обычный контейнер ??  -->
+
+<h2 class="text-center">Enter login and password</h2>
+<h2 class="text-center text-danger"><%= @dinaed %></h2> 
+
+<form action="/login" method="POST">
+  
+  <div class="mb-3">
+    <label for="log_name" class="form-label">Введите логин</label>
+    <input type="text" name="login" class="form-control" id="log_name">
+  </div>
+
+  <div class="mb-3">
+    <label for="log_pass" class="form-label">Введите пароль</label>
+    <input type="password" name="password" class="form-control" id="log_pass">
+  </div>
+
+  <input type="submit" class="btn btn-lg btn-primary">
+
+</form>
+
+</div>
