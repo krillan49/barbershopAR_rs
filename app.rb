@@ -14,3 +14,31 @@ end
 class Barber < ActiveRecord::Base
   validates :name, presence: true
 end
+
+
+before do
+	@barbers = Barber.all
+end
+
+get '/' do
+  @active = 'main'
+	erb :index
+end
+
+get '/visit' do
+  @active = 'visit'
+  @c = Client.new
+	erb :visit
+end
+
+post '/visit' do
+  @active = 'visit'
+	@c = Client.new params[:client] 
+
+  if @c.save 
+		erb "<p>Thank you!</p>"
+	else
+    @error = @c.errors.full_messages.first
+		erb :visit
+	end
+end
