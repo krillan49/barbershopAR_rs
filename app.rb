@@ -8,7 +8,6 @@ class Client < ActiveRecord::Base
   validates :name, presence: true
   validates :phone, presence: true
   validates :datestamp, presence: true
-  validates :color, presence: true
 end
 
 class Barber < ActiveRecord::Base
@@ -36,9 +35,10 @@ post '/visit' do
 	@c = Client.new params[:client] 
 
   if @c.save 
-		erb "<p>Thank you!</p>"
+    @message = "Thank you!"
+		erb :visit
 	else
-    @error = @c.errors.full_messages.first
+    @error = @c.errors.full_messages#.first
 		erb :visit
 	end
 end
