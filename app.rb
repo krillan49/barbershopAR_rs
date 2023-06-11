@@ -70,7 +70,7 @@ post '/visit' do
     @message = "Thank you!"
 		erb :visit
 	else
-    @error = @c.errors.full_messages#.first
+    #@error = @c.errors.full_messages#.first     - деактивировано
 		erb :visit
 	end
 end

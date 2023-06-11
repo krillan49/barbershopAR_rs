@@ -10,29 +10,26 @@
 
 	<div class="mb-3">	
 		<label for="u_name" class="form-label">Ваше имя</label>
-		<!--<input class="form-control <%= 'is-invalid' if nil %>" type="text" name="client[name]" value="<%= @c.name %>" id="u_name" aria-describedby="u_name_error">
-		<% if @visit_error %>
-			<div id="u_name_error" class="form-text" style="color: red"><%= @visit_error[:user_name] %></div>
-		<% end %>-->
-    <input class="form-control" type="text" name="client[name]" value="<%= @c.name %>" id="u_name" aria-describedby="u_name_error">
+		<input class="form-control <%= 'is-invalid' if @c.name == '' %>" type="text" name="client[name]" value="<%= @c.name %>" id="u_name" aria-describedby="u_name_error">
+		<% if @c.name == '' %>
+			<div id="u_name_error" class="form-text" style="color: red">Введите имя</div>
+		<% end %>
 	</div>
 
 	<div class="mb-3">
 		<label for="u_phone" class="form-label">Ваш телефон</label>
-		<!--<input class="form-control <%= 'is-invalid' if @visit_error && @visit_error[:phone] %>" type="text" name="client[phone]" value="<%= @c.phone %>" id="u_phone" aria-describedby="u_phone_error">
-		<% if @visit_error %>
-			<div id="u_phone_error" class="form-text" style="color: red"><%= @visit_error[:phone] %></div>
-		<% end %>-->
-    <input class="form-control" type="text" name="client[phone]" value="<%= @c.phone %>" id="u_phone" aria-describedby="u_phone_error">
+		<input class="form-control <%= 'is-invalid' if @c.phone == '' %>" type="text" name="client[phone]" value="<%= @c.phone %>" id="u_phone" aria-describedby="u_phone_error">
+		<% if @c.phone == '' %>
+			<div id="u_phone_error" class="form-text" style="color: red">Введите телефон</div>
+		<% end %>
 	</div>
 
 	<div class="mb-3">
 		<label for="u_dat" class="form-label">Когда вас ждать?</label>
-		<!--<input class="form-control <%= 'is-invalid' if @visit_error && @visit_error[:date_time] %>" name="client[datestamp]" value="<%= @c.datestamp %>" type="datetime-local" id="u_dat" aria-describedby="u_dat_error">
-		<% if @visit_error %>
-			<div id="u_dat_error" class="form-text" style="color: red"><%= @visit_error[:date_time] %></div>
-		<% end %>-->
-    <input class="form-control" name="client[datestamp]" value="<%= @c.datestamp %>" type="datetime-local" id="u_dat" aria-describedby="u_dat_error">
+		<input class="form-control <%= 'is-invalid' if @c.datestamp == '' %>" name="client[datestamp]" value="<%= @c.datestamp %>" type="datetime-local" id="u_dat" aria-describedby="u_dat_error">
+		<% if @c.datestamp == '' %>
+			<div id="u_dat_error" class="form-text" style="color: red">Введите время для записи</div>
+		<% end %>
 	</div>
 
 	<div class="mb-3">
